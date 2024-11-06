@@ -1,22 +1,59 @@
-# SEL0337
-Victor Marcelo Riverete Monteiro Padial - 12547444
-João Vitor Abreu e Oliveira - 12624287
+# Raspberry Pi Security System with RFID and Camera Integration
 
-RFID
+## Project Members
+- **Victor Marcelo Riverete Monteiro Padial** - 12547444
+- **João Vitor Abreu e Oliveira** - 12624287
 
+## Overview
 
-Na prática foi configurado um circuito com a Raspberry Pi, incorporando o módulo RFID-RC522. A comunicação SPI foi ativada, e a biblioteca Python do módulo RFID foi instalada para gravação dos ID da TAG RFID lida em um código anterior. O código é então salvo para posterior utilização em um circuito com LED.
-Ao aproximar uma Tag do leitor RFID, o circuito aciona LEDs verde indicando acesso liberado ou vermelho indicando acesso negado com base no ID cadastrado. O funcionamento do sistema é demonstrado no GIF a seguir, em que é aproximado uma TAG com ID diferente da cadastrada. O ID cadastrado para acesso liberado é aquele lido pelo código anterior.
+This project implements a basic security system using a Raspberry Pi, integrating an RFID module (RC522) and a camera for facial recognition. The system controls access by reading RFID tags and identifying authorized faces. 
 
-https://github.com/VictorMRMP/SEL0337/assets/83428029/bc12f847-c35b-424c-b9f7-a19e05c2cdf1
+## Components
 
-Câmera
+- **Raspberry Pi**
+- **RFID-RC522 Module**
+- **LEDs (Green and Red)**
+- **Camera Module**
 
+## RFID System
 
-A câmera foi integrada à Raspberry Pi e testada por meio do libcamera-hello, Haar Cascade e as bibliotecas Python OpenCV e PiCamera2 foram utilizadas para detecção facial.
+The RFID system is configured with the Raspberry Pi using the RFID-RC522 module. The SPI communication protocol was activated, and the RFID module's Python library was used to read and register the IDs of RFID tags.
 
-![WhatsApp Image 2023-12-15 at 14 49 48](https://github.com/VictorMRMP/SEL0337/assets/83428029/2b2d97d0-6e9b-4bd6-beaf-c21fc2338e5f)
+- **Configuration**: 
+  - The RFID module reads tag IDs, which are saved in the code for later comparison.
+  - When a tag is presented to the reader, the system checks if the ID matches a pre-registered ID.
+  
+- **Access Control**: 
+  - If the presented ID matches the registered ID, the green LED lights up, indicating access granted.
+  - If the ID does not match, the red LED lights up, indicating access denied.
 
-Em seguida foi adicionado a função de mostrar o NUSP da dupla na janela de detecção dos rostos. O Giovane fez essa parte da prática em conjunto com a dupla.
+## Camera System
 
-![WhatsApp Image 2023-12-15 at 14 49 48 (1)](https://github.com/VictorMRMP/SEL0337/assets/83428029/5379b3aa-8bc4-4161-bed8-959dbb85da99)
+A camera module was integrated with the Raspberry Pi for facial detection using `libcamera-hello`. Facial detection was implemented using Haar Cascade with Python libraries OpenCV and PiCamera2.
+
+- **Detection Setup**:
+  - The system detects faces in real-time and displays them in a detection window.
+  - The NUSP (student ID number) of the team members is displayed within the detection window.
+
+## Additional Contributions
+
+This project was completed with assistance from Giovane, who contributed to the NUSP display feature within the facial detection window.
+
+---
+
+## How to Run the Project
+
+1. **RFID Setup**:
+   - Connect the RFID-RC522 module to the Raspberry Pi and enable SPI communication.
+   - Install the necessary Python libraries for RFID functionality.
+   - Run the Python script to register a tag ID.
+
+2. **Camera Setup**:
+   - Connect the camera to the Raspberry Pi.
+   - Use `libcamera-hello` to ensure the camera is correctly connected.
+   - Run the facial detection script with OpenCV and PiCamera2 libraries installed.
+
+## License
+
+This project is licensed under the MIT License.
+
